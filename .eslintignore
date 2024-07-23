@@ -1,0 +1,8 @@
+test.js
+i18n-index-template.js
+dist
+.eslintrc.js
+commitlint.config.js
+node_modules/**
+ts-dist
+jest.config.ts

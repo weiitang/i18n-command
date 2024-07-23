@@ -1,0 +1,97 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "es5", "es6", "es7", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    // 参数可以为any
+    "noImplicitAny": false,
+    "jsx": "react-jsx",
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false,
+
+    // 别名
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@src/*": [
+        "./src/*"
+      ],
+      "@model/*": [
+        "./model/*"
+      ],
+      "ts-fns": [
+        "./src/lib/ts-fns"
+      ],
+      "tyshemo": [
+        "./src/lib/tyshemo"
+      ],
+      "algeb": [
+        "./src/lib/algeb"
+      ],
+      "@core": [
+        "./src/core"
+      ],
+      "@typings/*": [
+        "./src/typings/*"
+      ]
+    },
+    "outDir": "/"
+  },
+
+  //  "compilerOptions": {
+  //   "target": "es2015",
+  //   "module": "esnext",
+  //   "jsx": "react-jsx",
+  //   "lib": [
+  //     "esnext",
+  //     "dom"
+  //   ],
+  //   "types": [
+  //     "node",
+  //     "react",
+  //   ],
+  //   "noEmit": true,
+  //   "checkJs": false,
+  //   "moduleResolution": "node",
+  //   "allowSyntheticDefaultImports": true,
+  //   "experimentalDecorators": true,
+  //   "emitDecoratorMetadata": true,
+  //   "skipLibCheck": true,
+  //   "useDefineForClassFields": false,
+  //   "strict": false,
+  //   "noImplicitAny": false,
+  //   "baseUrl": ".",
+  //   "allowJs": true,
+  //   "esModuleInterop": true,
+  //   "forceConsistentCasingInFileNames": true,
+  //   "noFallthroughCasesInSwitch": true,
+  //   "resolveJsonModule": true,
+  //   "isolatedModules": true,
+  //   "paths": {
+  //     "@core": [
+  //       "./packages/shared/core"
+  //     ],
+  //     "@shared/*": [
+  //       "./packages/shared/*"
+  //     ]
+  //   }
+  // },
+  "include": ["src/**/*", "i18n"],
+  "exclude": ["node_modules", "src/modules/workflow/custom/**", "src/hook/use-request/__test__", "static/**", "src/lib/luckysheet-excel"]
+}
