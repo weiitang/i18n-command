@@ -181,8 +181,8 @@ class RainbowInstance {
         }
       );
       retCode !== 0
-        ? throwError('更新数据到七彩石出错，请reset代码重试')
-        : logger.info('更新数据到七彩石成功');
+        ? throwError('更新数据到石头出错，请reset代码重试')
+        : logger.info('更新数据到石头成功');
     }
     if (addWords.length) {
       const { ret_code: retCode } = await this.rainbow.changeRowData(
@@ -209,8 +209,8 @@ class RainbowInstance {
         }
       );
       retCode !== 0
-        ? throwError('新增数据到七彩石出错，请reset代码重试')
-        : logger.info('新增数据到七彩石成功');
+        ? throwError('新增数据到石头出错，请reset代码重试')
+        : logger.info('新增数据到石头成功');
     }
     return {
       changeWords,
@@ -245,12 +245,12 @@ class RainbowInstance {
         // 更新config中version信息
         setCurrentVersion(currentTime);
 
-        logger.info('七彩石发布数据成功');
+        logger.info('石头发布数据成功');
       } else {
         logger.info('数据未有修改');
       }
     } catch (e) {
-      logger.error('七彩石发布数据失败, 请reset代码重试：', e);
+      logger.error('石头发布数据失败, 请reset代码重试：', e);
       process.exit(1);
     }
   }

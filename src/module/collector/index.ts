@@ -116,7 +116,7 @@ class Collector {
   }
   async initI18nStore(type: string) {
     if (type === initType.rainbow) {
-      // 通过七彩石获取词条
+      // 通过石头获取词条
       const allDatas = await this.rainbow.queryAllDatas();
       allDatas.forEach((data: any) => {
         const item = new CollectorItem(data);
@@ -194,7 +194,7 @@ class Collector {
         // 合并store中和config配置中的数据，优先使用config配置的内容
         let data = { ...(getWordResult || {}), ...result[key] };
         // 判断数据源版本
-        // 如果是七彩石，版本不匹配说明七彩石有更新优先使用七彩石；版本匹配优先使用本地数据
+        // 如果是石头，版本不匹配说明石头有更新优先使用石头；版本匹配优先使用本地数据
         // 如果是json数据源则词条都是同步更新，优先使用config中的数据
         if (type === initType.rainbow) {
           if (configVersion !== rainbowVersion) {
@@ -318,7 +318,7 @@ class Collector {
           const collecterItem = {
             ...value.data,
             status,
-            // 如果词条没有变化过不需要提交到七彩石
+            // 如果词条没有变化过不需要提交到石头
             isChanged: value.isChanged,
             isRecord: value.isRecord,
           };

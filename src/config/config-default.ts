@@ -77,9 +77,9 @@ const defaultConfig: IConfig = {
   i18nStoreFirst: false,
   // 只输出国际化脚本覆盖到的词条
   outputOnlyUsed: false,
-  // 七彩石配置
+  // 石头配置
   rainbow: {
-    config: {}, // 七彩石初始化配置
+    config: {}, // 石头初始化配置
     signMethod: 'sha1',
   },
   // i18n-store目录 @由项目配置提供

@@ -93,7 +93,7 @@ async function exec() {
   // 输出收集器结果并生成配置文件
   const result = Collector.output();
 
-  // 数据源是七彩石 输出到七彩石；json输出到i18nStorePath中
+  // 数据源是石头 输出到石头；json输出到i18nStorePath中
   if (config.i18nDataSource === DATASOURCE_TYPE.RAINBOW) {
     await rainbow.releaseDatas(result);
   } else {

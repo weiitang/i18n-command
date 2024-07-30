@@ -30,7 +30,7 @@ export function getMd5Id(str: string, len = 8) {
 // 检查配置
 export const checkConfig = async (config: IConfig) => {
   let isPass = true;
-  // 数据源为七彩石时，必须配置appID、userID、secretKey
+  // 数据源为石头时，必须配置appID、userID、secretKey
   if (config.i18nDataSource === DATASOURCE_TYPE.RAINBOW) {
     if (_.isEmpty(config.rainbow)) {
       logger.error('请配置rainbow配置');
