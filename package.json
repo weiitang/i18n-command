@@ -1,6 +1,6 @@
 {
   "name": "kz-i18n-command",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "node command test",
   "main": "./dist/index.js",
   "scripts": {
