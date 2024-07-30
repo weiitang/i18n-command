@@ -14,7 +14,7 @@ function generateAst(stringCode: string) {
 
 describe('generator', () => {
   test('取反操作: !!', () => {
-    const code = '{{!!demo?"jsonz":"test"}}';
+    const code = '{{!!demo?"wei":"test"}}';
     const ast = generateAst(code);
     const result = generator(ast);
     expect(result).toBe(code);
@@ -56,7 +56,7 @@ describe('generator', () => {
   });
 
   test('管道带参数', () => {
-    const code = '{{"测试" | pipe : {name: vm.user, code: "jsonz"} }}';
+    const code = '{{"测试" | pipe : {name: vm.user, code: "wei"} }}';
     const ast = generateAst(code);
     const result = generator(ast, {
       isInExpression: false,

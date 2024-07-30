@@ -122,13 +122,13 @@ function merge(workPath, outputPath) {
 }
 
 const workPath = [
-  '/Users/jsonz/project/temporary/excel-demo/pc-trans-list-0809.xlsx',
-  '/Users/jsonz/project/temporary/excel-demo/pc-trans-list-0810.xlsx',
-  '/Users/jsonz/project/temporary/excel-demo/pc-trans-list-0811.xlsx',
+  '/Users/wei/project/temporary/excel-demo/pc-trans-list-0809.xlsx',
+  '/Users/wei/project/temporary/excel-demo/pc-trans-list-0810.xlsx',
+  '/Users/wei/project/temporary/excel-demo/pc-trans-list-0811.xlsx',
 ];
 
 const outputPath =
-  '/Users/jsonz/project/temporary/excel-demo/pc-trans-list-0812.xlsx';
+  '/Users/wei/project/temporary/excel-demo/pc-trans-list-0812.xlsx';
 
 merge(workPath, outputPath);
 

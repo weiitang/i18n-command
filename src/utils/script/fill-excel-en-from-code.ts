@@ -7,10 +7,10 @@ import requireEsm from 'esm';
 import { DEFAULT_HEADER } from '../constant';
 
 const requireEs = requireEsm(module);
-const pcI18nPath = '/Users/jsonz/work/@tim/tim-web/src/pc/src/i18n';
+const pcI18nPath = '/Users/wei/work/i18n';
 const zhCnPattern = path.resolve(pcI18nPath, './zh-cn/**/*.js');
 const enPattern = path.resolve(pcI18nPath, './en/**/*.js');
-const excelPath = '/Users/jsonz/work/@timkit/i18n-auto/src/pc-trans-list.xlsx';
+const excelPath = '/Users/wei/work/pc-trans-list.xlsx';
 
 const zhMap: I18nMap = {};
 const enMap: I18nMap = {};

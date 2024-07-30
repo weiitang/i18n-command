@@ -22,7 +22,7 @@ export default class NormalText extends BasicText implements ITextClass {
 
   static wrongExample = [
     '文案{{vm.count}}',
-    '文案 {{ vm.name ? "jsonz": "demo" }}',
+    '文案 {{ vm.name ? "wei": "demo" }}',
   ];
 
   static verify(originString: string, params?: ITextParams) {

@@ -1,7 +1,7 @@
 /*
  * @Description: 模版格式转换
  * 将表达式模版转换为普通模版
- * @Example: vm.name + 'jsonz' => {{vm.name}}jsonz
+ * @Example: vm.name + 'wei' => {{vm.name}}wei
  */
 import translateExpression2String from '../ast/translate-expression-to-string';
 
@@ -62,10 +62,10 @@ describe('translateExpression2String', () => {
 
   test('函数调用多个参数', () => {
     const stringCode = create(
-      'vm.a.b.c.handleClick({a:"中文"}, "jsonz", vm.ddd, item)'
+      'vm.a.b.c.handleClick({a:"中文"}, "wei", vm.ddd, item)'
     );
     expect(stringCode).toBe(
-      '{{vm.a.b.c.handleClick({a: "中文"}, "jsonz", vm.ddd, item)}}'
+      '{{vm.a.b.c.handleClick({a: "中文"}, "wei", vm.ddd, item)}}'
     );
   });
 });

@@ -203,7 +203,7 @@ export function handleLiteralArray(node: LiteralArray) {
   return `[${expressions.join(',')}]`;
 }
 
-// vm.demo['jsonz']
+// vm.demo['wei']
 export function handleKeyedRead(node: KeyedRead, params: GeneratorParams) {
   const { receiver, key } = node;
   const receiverCode = generator(receiver, { isInExpression: true });

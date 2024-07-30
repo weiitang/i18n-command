@@ -373,7 +373,7 @@ describe('替换时发现的一些问题', () => {
     const d = create({
       originString: '文案 {{ vm.count || "呆毛" }}',
       tag: 'span',
-      attrName: 'jsonz',
+      attrName: 'wei',
     });
     expect(d.extract()).toEqual(expect.arrayContaining(['文案', '呆毛']));
     expect(d.replace()).toEqual(

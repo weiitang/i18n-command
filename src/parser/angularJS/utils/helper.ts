@@ -61,7 +61,7 @@ export interface IStringTypeParams {
 /**
  * 获取放在i18n模版的中文，需要做一些处理，比如 '" 的转换
  * 比如 {{ }} => []
- * 你好'{{jsonz}} => 你好[jsonz]
+ * 你好'{{wei}} => 你好[wei]
  * @param params
  * @returns
  */
@@ -142,8 +142,8 @@ function getStringType(params: IStringTypeParams): StringType {
 }
 
 /**
- * @param key vm.jsonz.user_name
- * @return vm@jsonz@user_name
+ * @param key vm.wei.user_name
+ * @return vm@wei@user_name
  */
 function translateKey2Variate(key: string) {
   return key.replace(/@/g, '.');
