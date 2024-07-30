@@ -361,7 +361,7 @@ module.exports = UserConfig;
 
   fs.writeFileSync(
     `${nowPath}/i18n-command-shell.js`,
-    `require('i18n-command');`,
+    `require('kz-i18n-command');`,
     'utf8'
   );
   const { rainbow } = program.opts();
@@ -393,7 +393,7 @@ module.exports = UserConfig;
 
   fs.writeFileSync(
     `${nowPath}/i18n-command-shell.js`,
-    `require('i18n-command');`,
+    `require('kz-i18n-command');`,
     'utf8'
   );
   const { json: entryFile = '' } = program.opts();
@@ -466,7 +466,7 @@ module.exports = UserConfig;
 // 创建执行脚本
 function createI18nAutoScript() {
   const spinner = ora('正在创建本地脚本...').start();
-  const shellFile = `require('i18n-command');`;
+  const shellFile = `require('kz-i18n-command');`;
 
   setTimeout(() => {
     fs.writeFile(
