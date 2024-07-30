@@ -500,7 +500,7 @@ function execShell() {
         } else {
           spinner.succeed('国际化脚本执行完成');
         }
-        // deleteI18nAutoScript();
+        deleteI18nAutoScript();
       }
     );
   }, 1000);

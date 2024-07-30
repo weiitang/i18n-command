@@ -18,7 +18,7 @@
 
 #### 开始使用
 
-`npm i i18n-command`
+`npm i kz-i18n-command`
 
 在项目根目录中新建`.i18n-command.js`的文件，按照下文参数说明进行配置，例如：
 
