@@ -34,6 +34,7 @@ const outputs = [
     file: resolve('dist/index.min.js'),
     format: 'umd',
     isUglify: true,
+    name: 'index.min',
   },
   {
     file: resolve('dist/bin/i18n-command.js'),
@@ -48,10 +49,11 @@ const outputs = [
 const len = outputs.length;
 
 const config = outputs.map((output, i) => {
-
   const isUglify = output.isUglify && !isDev;
   return {
-    input: output.isBin ? resolve('./src/index.ts') : resolve('./src/index.ts'),
+    input: output.isBin
+      ? resolve('./src/index.bin.ts')
+      : resolve('./src/index.ts'),
     output,
     plugins: [
       // rollup-plugin-commonjs应该用在其他插件转换你的模块之前 - 这是为了防止其他插件的改变破坏CommonJS的检测
@@ -80,24 +82,28 @@ const config = outputs.map((output, i) => {
         exclude: 'node_modules/**', // 只编译我们的源代码
         babelHelpers: 'runtime',
       }),
-      ...(
-        isDev && i === len - 1
-          ? [
-            serve({ // 使用开发服务插件
+      ...(isDev && i === len - 1
+        ? [
+            serve({
+              // 使用开发服务插件
               port: 3001,
               // 设置 exmaple的访问目录和dist的访问目录
               contentBase: [resolve('example'), resolve('dist')],
             }),
-          ] : []
-      ),
-      ...(isUglify ? [
-        uglify(),
-      ] : []),
+          ]
+        : []),
+      ...(isUglify ? [uglify()] : []),
       // 作用：处理json格式文件
       json(),
     ],
     // 作用：指出应将哪些模块视为外部模块，否则会被打包进最终的代码里
-    external: output.isBin ?  [] : [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.devDependencies || {}), ...['path', 'fs', 'typescript']],
+    external: output.isBin
+      ? []
+      : [
+          ...Object.keys(pkg.dependencies || {}),
+          ...Object.keys(pkg.devDependencies || {}),
+          ...['path', 'fs', 'typescript'],
+        ],
   };
 });
 
