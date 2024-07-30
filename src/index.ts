@@ -1,6 +1,7 @@
 import { getConfig } from './config/index';
 import JsParser from './parser/js';
 import { AngularTemplateParser } from './parser/angularJS';
+import type { Record } from './parser/angularJS/type';
 import { getAllFiles, IPathItem } from './utils/index';
 import loggerInstence, { logger, resultLogger } from './module/log/index';
 import Collector, { IKey } from './module/collector/index';
@@ -71,7 +72,7 @@ async function exec() {
           });
         },
         getData(id, module) {
-          return Collector.get(id, module);
+          return Collector.get(id, module) as Record;
         },
         record(id) {
           Collector.record(module, id);
@@ -80,7 +81,7 @@ async function exec() {
           Collector.add(item.module, item);
         },
         getLegacyI18nData({ namespace, i18nKey }) {
-          return Collector.get(i18nKey, namespace);
+          return Collector.get(i18nKey, namespace) as Record;
         },
       });
       angularParser.traverse();
