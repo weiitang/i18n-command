@@ -124,15 +124,17 @@ function useCurrentConfig() {
 
 // 检测目录下是否存在配置文件
 function existsUserConfig() {
-  const spinner = ora('正在检查目录下是否存在 .i18n-auto 配置文件...').start();
+  const spinner = ora(
+    '正在检查目录下是否存在 .i18n-command 配置文件...'
+  ).start();
 
   setTimeout(() => {
-    fs.access(`${nowPath}/.i18n-auto.js`, (err: Error) => {
+    fs.access(`${nowPath}/.i18n-command.js`, (err: Error) => {
       if (err) {
         spinner.info('未检测到配置文件');
         workPathInit();
       } else {
-        spinner.succeed('检测到目录下存在 .i18n-auto 配置文件');
+        spinner.succeed('检测到目录下存在 .i18n-command 配置文件');
         useCurrentConfig();
       }
     });
@@ -348,7 +350,7 @@ function runRainbow() {
 const UserConfig = require('${path.relative(
     __dirname,
     nowPath
-  )}/.i18n-auto.js');
+  )}/.i18n-command.js');
 module.exports = UserConfig;
 `;
   fs.writeFileSync(
@@ -358,7 +360,7 @@ module.exports = UserConfig;
   );
 
   fs.writeFileSync(
-    `${nowPath}/i18n-auto-shell.js`,
+    `${nowPath}/i18n-command-shell.js`,
     `require('i18n-command');`,
     'utf8'
   );
@@ -366,7 +368,7 @@ module.exports = UserConfig;
   const [appID, userID, secretKey, tableId, groupId, group, creator, envName] =
     rainbow;
   const { code } = shell.exec(
-    `node i18n-auto-shell.js --appID=${appID} --userID=${userID} --secretKey=${secretKey} --tableId=${tableId} --groupId=${groupId} --group=${group} --creator=${creator} --envName=${envName}`,
+    `node i18n-command-shell.js --appID=${appID} --userID=${userID} --secretKey=${secretKey} --tableId=${tableId} --groupId=${groupId} --group=${group} --creator=${creator} --envName=${envName}`,
     { silent: false, async: false }
   );
   deleteI18nAutoScript();
@@ -380,7 +382,7 @@ function runJson() {
 const UserConfig = require('${path.relative(
     __dirname,
     nowPath
-  )}/.i18n-auto.js');
+  )}/.i18n-command.js');
 module.exports = UserConfig;
 `;
   fs.writeFileSync(
@@ -390,14 +392,14 @@ module.exports = UserConfig;
   );
 
   fs.writeFileSync(
-    `${nowPath}/i18n-auto-shell.js`,
+    `${nowPath}/i18n-command-shell.js`,
     `require('i18n-command');`,
     'utf8'
   );
   const { json: entryFile = '' } = program.opts();
   // 不传参数 json 默认为true
   const { code } = shell.exec(
-    `node i18n-auto-shell.js --entryFile=${
+    `node i18n-command-shell.js --entryFile=${
       entryFile === true ? '' : entryFile
     }`,
     { silent: false, async: false }
@@ -410,7 +412,7 @@ module.exports = UserConfig;
 
 // 创建用户的配置文件
 function createUserConfig(conf: any) {
-  const spinner = ora('正在创建 .i18n-auto 本地配置文件...').start();
+  const spinner = ora('正在创建 .i18n-command 本地配置文件...').start();
 
   setTimeout(() => {
     const userResult = `
@@ -418,14 +420,16 @@ const config = ${JSON.stringify(conf, null, 2)}
 module.exports = config;
   `;
     fs.writeFile(
-      `${nowPath}/.i18n-auto.js`,
+      `${nowPath}/.i18n-command.js`,
       userResult,
       'utf8',
       (err: Error) => {
         if (err) {
           console.log(err);
         }
-        spinner.succeed(`${chalk.green('创建 .i18n-auto 本地配置文件成功')}`);
+        spinner.succeed(
+          `${chalk.green('创建 .i18n-command 本地配置文件成功')}`
+        );
         readUserConfig();
       }
     );
@@ -440,7 +444,7 @@ function readUserConfig() {
 const UserConfig = require('${path.relative(
       __dirname,
       nowPath
-    )}/.i18n-auto.js');
+    )}/.i18n-command.js');
 module.exports = UserConfig;
 `;
     fs.writeFile(
@@ -465,15 +469,19 @@ function createI18nAutoScript() {
   const shellFile = `require('i18n-command');`;
 
   setTimeout(() => {
-    fs.writeFile(`${nowPath}/i18n-auto-shell.js`, shellFile, (error: Error) => {
-      if (error) {
-        spinner.fail('创建文件失败，尝试使用管理员权限运行');
-        return false;
-      }
+    fs.writeFile(
+      `${nowPath}/i18n-command-shell.js`,
+      shellFile,
+      (error: Error) => {
+        if (error) {
+          spinner.fail('创建文件失败，尝试使用管理员权限运行');
+          return false;
+        }
 
-      spinner.succeed('创建i18n执行文件成功');
-      execShell();
-    });
+        spinner.succeed('创建i18n执行文件成功');
+        execShell();
+      }
+    );
   }, 1000);
 }
 
@@ -482,7 +490,7 @@ function execShell() {
   const spinner = ora('正在执行国际化脚本...').start();
   setTimeout(() => {
     shell.exec(
-      'node i18n-auto-shell.js $*',
+      'node i18n-command-shell.js $*',
       { silent: false },
       (error: number, stdout: string, stderr: string) => {
         if (error) {
@@ -500,7 +508,7 @@ function execShell() {
 
 // 完成后删除执行脚本
 function deleteI18nAutoScript() {
-  fs.unlinkSync(`${nowPath}/i18n-auto-shell.js`);
+  fs.unlinkSync(`${nowPath}/i18n-command-shell.js`);
 }
 
 // 开始执行
