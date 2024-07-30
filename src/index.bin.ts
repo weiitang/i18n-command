@@ -359,7 +359,7 @@ module.exports = UserConfig;
 
   fs.writeFileSync(
     `${nowPath}/i18n-auto-shell.js`,
-    `require('@tencent/i18n-auto');`,
+    `require('i18n-command');`,
     'utf8'
   );
   const { rainbow } = program.opts();
@@ -391,7 +391,7 @@ module.exports = UserConfig;
 
   fs.writeFileSync(
     `${nowPath}/i18n-auto-shell.js`,
-    `require('@tencent/i18n-auto');`,
+    `require('i18n-command');`,
     'utf8'
   );
   const { json: entryFile = '' } = program.opts();
